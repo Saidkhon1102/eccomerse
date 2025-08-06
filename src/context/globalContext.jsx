@@ -8,6 +8,7 @@ const initialState = () => {
     ? JSON.parse(localStorage.getItem("products"))
     : {
         user: true,
+        likedProducts:[],
         products: [],
         totalAmount: 0,
         totalPrice: 0,
@@ -47,10 +48,23 @@ const changeState = (state, action) => {
         totalAmount: payload.amount,
         totalPrice: payload.price,
       };
-    case "CLEAR":
+    case "CLEAR": {
       let req = confirm(`You are deleting the items now? `)
       if (!req) return state;
       return { ...state, products: [] };
+    }
+      case "ADD_LIKED":
+        return{
+          ...state,
+          likedProducts:[...state.likedProducts, payload],
+        };
+        case "REMOVE_LIKED":
+          return{
+            ...state,
+            likedProducts: state.likedProducts.filter((p)=>{
+                return p.id != payload;
+            }),
+          }
     default:
       return state;
   }

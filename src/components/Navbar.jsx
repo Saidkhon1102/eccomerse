@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
 import { useContext } from "react";
-import { GlobalContext } from "../context/globalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import { useTheme } from "../hooks/useTheme";
 import { text } from "@fortawesome/fontawesome-svg-core";
 
@@ -33,6 +33,7 @@ function Navbar() {
         <div className="navbar-end flex items-center gap-5">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
+            
             <input onClick={changeTheme} type="checkbox" />
 
             {/* sun icon */}
